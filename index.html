@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vermeille Pontoire — Graphiste</title>
+<meta name="description" content="Portfolio de Vermeille Pontoire, graphiste à la recherche d'un poste — identités visuelles, print, illustrations et photographie.">
+<link rel="stylesheet" href="https://use.typekit.net/era0jki.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Hanken Grotesk ≈ Scandia (titres) · Nunito Sans ≈ Sofia Pro (sous-titres) · Gluten ≈ manuscrite du logo -->
+<link href="https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@0,400..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,400&family=Nunito+Sans:opsz,wght@6..12,300..800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23F18B6F'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- ===== LOADER ===== -->
+<div class="loader" id="loader">
+  <div class="loader__blobs">
+    <span class="loader__blob loader__blob--1"></span>
+    <span class="loader__blob loader__blob--2"></span>
+    <span class="loader__blob loader__blob--3"></span>
+  </div>
+  <img src="assets/img/logo-vermeille-color.png" alt="Vermeille" class="loader__logo-img">
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- ===== CURSOR DOT (desktop only) ===== -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__logo">
+      <img src="assets/img/brand-vermeille-logo.png" alt="Vermeille — Graphisme" class="nav__logo-img">
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#parcours" class="nav__link">Parcours</a>
+      <a href="#portfolio" class="nav__link">Portfolio</a>
+      <a href="#contact" class="nav__link">Contact</a>
+      <a href="mailto:v.pontoire@orange.fr" class="nav__cta">Me contacter</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__blobs" aria-hidden="true">
+      <span class="blob blob--coral" data-speed="0.15"></span>
+      <span class="blob blob--lavender" data-speed="0.3"></span>
+      <span class="blob blob--cream" data-speed="0.08"></span>
+    </div>
+    <div class="hero__inner">
+      <div class="hero__text reveal">
+        <p class="hero__kicker">Graphiste · en recherche d'emploi · Cholet &amp; Angers</p>
+        <h1 class="hero__title">
+          Hello, moi c'est <span class="script">Vermeille</span>
+        </h1>
+        <p class="hero__lead">
+          Je suis graphiste et actuellement à la recherche d'un poste dans ce domaine.
+          J'ai toujours été passionnée par l'art, le graphisme et le dessin.
+        </p>
+        <p class="hero__lead hero__lead--muted">
+          Ce que je préfère&nbsp;? Partir de zéro pour créer un projet dans son ensemble
+          et découvrir le résultat final.
+        </p>
+        <div class="hero__actions">
+          <a href="#portfolio" class="btn btn--primary">Voir mon travail</a>
+          <a href="#parcours" class="btn btn--ghost">Mon parcours</a>
+        </div>
+      </div>
+      <div class="hero__portrait reveal reveal--delay-1">
+        <div class="hero__portrait-frame">
+          <span class="hero__portrait-texture" aria-hidden="true"></span>
+          <img src="assets/img/hero-portrait.jpg" alt="Portrait de Vermeille Pontoire" width="600" height="600" loading="eager">
+          <span class="hero__portrait-ring"></span>
+        </div>
+        <span class="hero__sticker">graphisme &amp; illustration</span>
+      </div>
+    </div>
+    <a href="#parcours" class="hero__scroll" aria-label="Défiler vers le bas">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== PARCOURS / TIMELINE ===== -->
+  <section class="parcours" id="parcours">
+    <div class="section-blob section-blob--left" aria-hidden="true" data-speed="0.1"></div>
+    <div class="section-blob section-blob--right" aria-hidden="true" data-speed="0.14"></div>
+
+    <div class="container">
+      <p class="eyebrow reveal">Mon parcours</p>
+      <h2 class="section-title reveal">
+        Aujourd'hui, je suis convaincue de vouloir poursuivre mon expérience dans le
+        domaine du <span class="script script--underline">graphisme</span>, un métier
+        qui m'anime chaque jour.
+      </h2>
+
+      <div class="timeline-tabs reveal">
+        <button class="timeline-tab is-active" data-track="formation">Formation</button>
+        <button class="timeline-tab" data-track="experience">Expérience</button>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-blob section-blob--right" aria-hidden="true" data-speed="0.12"></div>
+    <div class="section-blob section-blob--left" aria-hidden="true" data-speed="0.09"></div>
+    <div class="container">
+      <p class="eyebrow reveal">Portfolio</p>
+      <h2 class="section-title reveal">Une sélection de <span class="script">projets</span> réalisés avec passion</h2>
+
+      <div class="filters reveal" id="filters">
+        <button class="filter-btn is-active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="visuelles">Identités visuelles</button>
+        <button class="filter-btn" data-filter="print">Print et Édition</button>
+        <button class="filter-btn" data-filter="illustrations">Illustrations</button>
+        <button class="filter-btn" data-filter="photographie">Photographie</button>
+      </div>
+
+      <div class="masonry" id="masonry">
+        <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <footer class="contact" id="contact">
+    <div class="contact__blobs" aria-hidden="true">
+      <span class="blob blob--coral blob--footer1" data-speed="0.1"></span>
+      <span class="blob blob--lavender blob--footer2" data-speed="0.18"></span>
+    </div>
+    <!-- <div class="contact__mascot" aria-hidden="true">
+      <img src="assets/img/mascot-penguin.png" alt="" class="contact__mascot-img">
+    </div> -->
+    <div class="container">
+      <div class="contact__header">
+        <div class="contact__header-text">
+                  <p class="eyebrow eyebrow--light reveal">Contact</p>
+        <h2 class="contact__title reveal">
+          Discutons de notre<br>
+          <span class="script">future collaboration</span>
+          <span class="contact__spark" aria-hidden="true">✺</span>
+        </h2>
+        <p class="contact__lead reveal">
+          À la recherche d'un poste en identités visuelles, illustrations et supports
+          de communication. N'hésitez pas à <strong>me contacter</strong>&nbsp;!
+        </p>
+        </div>
+        <!-- <a href="mailto:v.pontoire@orange.fr" class="btn btn--script reveal">
+          Écrivons-nous&nbsp;! 
+        </a> -->
+
+      </div>
+
+      <div class="contact__row reveal">
+        <a href="mailto:v.pontoire@orange.fr" class="contact__item" data-accent="coral">
+          <span class="contact__chip" aria-hidden="true">✉</span>
+          <span class="contact__label">Email</span>
+          <span class="contact__value">v.pontoire@orange.fr</span>
+        </a>
+        <a href="tel:+33644216332" class="contact__item" data-accent="lavender">
+          <span class="contact__chip" aria-hidden="true">☎</span>
+          <span class="contact__label">Téléphone</span>
+          <span class="contact__value">06 44 21 63 32</span>
+        </a>
+        <a href="https://instagram.com/_may_illustrations_" target="_blank" rel="noopener" class="contact__item" data-accent="teal">
+          <span class="contact__chip" aria-hidden="true">◎</span>
+          <span class="contact__label">Instagram</span>
+          <span class="contact__value">@_may_illustrations_</span>
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=18+rue+des+Prés+de+Moines,+49340+Trémentines,+France"
+          target="_blank"
+          rel="noopener"
+          class="contact__item"
+          data-accent="mustard">
+          <span class="contact__chip" aria-hidden="true">⌂</span>
+          <span class="contact__label">Adresse</span>
+          <span class="contact__value">
+            18 rue des Prés de Moines<br>
+            49340 Trémentines
+          </span>
+        </a>
+      </div>
+
+      <div class="contact__bottom reveal">
+        <a href="#top" class="nav__logo nav__logo--footer">
+          <img src="assets/img/logo-vermeille-light.png" alt="Vermeille — Graphisme" class="nav__logo-img nav__logo-img--light">
+        </a>
+        <p class="contact__copy">© 2026 Vermeille Pontoire — Graphiste</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ===== PROJECT MODAL ===== -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" id="modalClose" aria-label="Fermer">✕</button>
+    <div class="modal__body" id="modalBody">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script src="js/projects-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
