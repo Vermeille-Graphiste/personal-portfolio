@@ -546,13 +546,14 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 .timeline-tabs{
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   gap: 6px;
   background: var(--white);
   padding: 6px;
   border-radius: 999px;
   box-shadow: var(--shadow-soft);
-  margin-bottom: 56px;
+  margin: 0 auto 56px;
 }
 .timeline-tab{
   border: none;
@@ -570,15 +571,48 @@ ul{ margin:0; padding:0; list-style:none; }
   color: var(--white);
   box-shadow: var(--shadow-pop);
 }
+/* chaque onglet reprend la couleur de sa colonne */
+.timeline-tab[data-track="experience"].is-active{
+  background: var(--coral);
+  box-shadow: 0 14px 30px -10px rgba(139, 114, 217, .45);
+}
 
+/* --- en-têtes de colonnes (desktop) --- */
+.timeline-heads{
+  display: flex;
+  max-width: 880px;
+  margin: 0 auto 20px;
+}
+.timeline-head{
+  width: 50%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  transition: opacity .45s var(--ease);
+}
+.timeline-head--experience{
+  text-align: right;
+  padding-right: 46px;
+  color: var(--coral);
+}
+.timeline-head--formation{
+  padding-left: 46px;
+  color: var(--coral);
+}
+
+/* --- rail central : expériences à gauche, formations à droite --- */
 .timeline{
   position: relative;
   max-width: 880px;
+  margin: 0 auto;
 }
 .timeline::before{
   content: "";
   position: absolute;
-  left: 22px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 6px;
   bottom: 6px;
   width: 2px;
@@ -586,7 +620,8 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .timeline-item{
   position: relative;
-  padding: 0 0 46px 66px;
+  width: 50%;
+  padding-bottom: 34px;
   opacity: 0;
   transform: translateY(28px);
   transition: opacity .7s var(--ease), transform .7s var(--ease);
@@ -596,28 +631,53 @@ ul{ margin:0; padding:0; list-style:none; }
   transform: translateY(0);
 }
 .timeline-item:last-child{ padding-bottom: 0; }
+
+.timeline-item--experience{
+  padding-right: 46px;
+  text-align: right;
+}
+.timeline-item--formation{
+  margin-left: 50%;
+  padding-left: 46px;
+}
+
+.timeline-item__inner{
+  transition: opacity .45s var(--ease);
+}
 .timeline-item__dot{
   position: absolute;
-  left: 8px; top: 2px;
-  width: 30px; height: 30px;
+  top: 4px;
+  width: 26px; height: 26px;
   border-radius: 50%;
-  background: var(--coral);
   border: 5px solid var(--cream);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+.timeline-item--experience .timeline-item__dot{
+  right: -13px;
+  background: var(--coral);
   box-shadow: 0 0 0 2px var(--coral-light);
 }
+.timeline-item--formation .timeline-item__dot{
+  left: -13px;
+  background: var(--coral);
+  box-shadow: 0 0 0 2px var(--coral-light);
+}
+
 .timeline-item__date{
   font-family: var(--font-display);
   font-weight: 600;
-  color: var( --coral);
   font-size: .85rem;
   text-transform: uppercase;
   letter-spacing: .06em;
   margin: 0 0 6px;
 }
+.timeline-item--experience .timeline-item__date{ color: var(--coral); }
+.timeline-item--formation .timeline-item__date{ color: var(--coral); }
+
 .timeline-item__card{
   background: var(--white);
   border-radius: var(--radius-md);
-  padding: 22px 26px;
+  padding: 20px 24px;
   box-shadow: var(--shadow-soft);
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
 }
@@ -625,25 +685,47 @@ ul{ margin:0; padding:0; list-style:none; }
   transform: translateY(-4px);
   box-shadow: 0 26px 50px -22px rgba(42,33,28,.3);
 }
+/* badge de piste : utile seulement quand les deux colonnes fusionnent (mobile) */
+.timeline-item__track{
+  display: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  margin-bottom: 6px;
+}
+.timeline-item--experience .timeline-item__track{ color: var(--coral); }
+.timeline-item--formation .timeline-item__track{ color: var(--coral); }
+
 .timeline-item__title{
   font-family: var(--font-subtitle-v2);
   font-style: normal;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  line-height: 1.35;
   margin: 0 0 4px;
 }
 .timeline-item__place{
   font-family: var(--font-subtitle-v2);
-  color: var( --coral);
-  font-weight: 500;
-  font-size: .92rem;
-  margin: 0 0 10px;
-}
-.timeline-item__desc{
   color: var(--ink-soft);
-  font-size: .94rem;
-  line-height: 1.6;
+  font-weight: 500;
+  font-size: .9rem;
   margin: 0;
+}
+
+/* --- mise en avant d'une seule piste via les onglets --- */
+.parcours.is-focus-formation .timeline-item--experience .timeline-item__inner,
+.parcours.is-focus-formation .timeline-item--experience .timeline-item__dot,
+.parcours.is-focus-formation .timeline-head--experience,
+.parcours.is-focus-experience .timeline-item--formation .timeline-item__inner,
+.parcours.is-focus-experience .timeline-item--formation .timeline-item__dot,
+.parcours.is-focus-experience .timeline-head--formation{
+  opacity: .26;
+}
+.parcours.is-focus-formation .timeline-item--experience .timeline-item__dot,
+.parcours.is-focus-experience .timeline-item--formation .timeline-item__dot{
+  transform: scale(.72);
 }
 
 /* ---------------------------------------------------------
@@ -682,16 +764,24 @@ ul{ margin:0; padding:0; list-style:none; }
   color: var(--cream);
 }
 
+/* Colonnes réelles (et non column-count, qui remplit verticalement) : le JS y
+   répartit les cartes ligne par ligne. Le NOMBRE de colonnes et ses points de
+   rupture sont définis uniquement dans columnCount() de js/main.js. */
 .masonry{
-  column-count: 3;
-  column-gap: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
 }
-@media (max-width: 980px){ .masonry{ column-count: 2; } }
-@media (max-width: 620px){ .masonry{ column-count: 1; } }
+.masonry__col{
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 .card{
-  break-inside: avoid;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
@@ -713,7 +803,7 @@ ul{ margin:0; padding:0; list-style:none; }
   background: var(--cream-2);
 }
 .card__media img{
-  width: 100%;
+  width: 110%;
   display: block;
   transition: transform .6s var(--ease);
 }
@@ -1178,7 +1268,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .modal__tag{
   display: inline-block;
   background: var(--lavender-light);
-  color: var(--lavender-dark);
+  color: var(--coral);
   font-family: var(--font-display);
   font-weight: 500;
   font-size: .74rem;
@@ -1260,6 +1350,28 @@ ul{ margin:0; padding:0; list-style:none; }
 @media (max-width: 540px){
   .hero{ padding-top: 120px; }
   .contact__bottom{ justify-content: center; text-align: center; }
+}
+
+/* Timeline : les deux colonnes fusionnent en une seule, rail à gauche */
+@media (max-width: 760px){
+  .timeline-heads{ display: none; }
+  .timeline::before{
+    left: 13px;
+    transform: none;
+  }
+  .timeline-item{
+    width: 100%;
+    margin-left: 0;
+    padding-left: 52px;
+    padding-right: 0;
+    text-align: left;
+  }
+  .timeline-item--experience .timeline-item__dot,
+  .timeline-item--formation .timeline-item__dot{
+    left: 0;
+    right: auto;
+  }
+  .timeline-item__track{ display: block; }
 }
 
 /* Respect reduced motion */
